@@ -1,0 +1,19 @@
+[project]
+name = "biotrackr"
+version = "0.1.0"
+description = "This package is used to get updates on bio-related papers and softwares."
+authors = [
+    {name = "Matteo Miotto", email = "miotsdata@gmail.com"},
+]
+dependencies = []
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+
+[tool.pdm]
+distribution = true
