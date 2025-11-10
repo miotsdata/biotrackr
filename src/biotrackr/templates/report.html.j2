@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bioinformatics Watchdog – Weekly Digest</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; color: #333; }
+        h1 { color: #336699; }
+        h2 { border-bottom: 2px solid #ccc; padding-bottom: 5px; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; }
+        a { color: #0066cc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .section { margin-bottom: 40px; }
+    </style>
+</head>
+<body>
+    <h1>Bioinformatics Watchdog 🧬</h1>
+    <p>Generated on {{ date }}</p>
+
+    {% if bioc_releases %}
+    <div class="section">
+        <h2>🔬 New Bioconductor Releases</h2>
+        <ul>
+            {% for r in bioc_releases %}
+            <li><b>{{ r.version }}</b> – released {{ r.release_date }} (<a href="{{ r.notes_url }}">release notes</a>)</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if papers %}
+    <div class="section">
+        <h2>📄 New Papers</h2>
+        <ul>
+            {% for p in papers %}
+            <li><b>{{ p.title }}</b><br>
+                <i>{{ p.authors }}</i> – {{ p.journal }} ({{ p.date }})
+                {% if p.url %}<br><a href="{{ p.url }}">Read</a>{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if github_releases %}
+    <div class="section">
+        <h2>🐍 New GitHub Releases</h2>
+        <ul>
+            {% for g in github_releases %}
+            <li>{{ g.repo }} – <b>{{ g.tag }}</b> (<a href="{{ g.url }}">view</a>)</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</body>
+</html>
+

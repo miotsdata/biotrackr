@@ -18,7 +18,7 @@ def fetch_papers(keywords, since_days=7):
         for r in resp.json().get("resultList", {}).get("result", []):
             cur.execute("INSERT OR IGNORE INTO papers VALUES (?,?,?,?,?,?,?)", (
                 r["id"], r["title"], r.get("authorString", ""), r.get("journalTitle", ""),
-                r.get("firstPublicationDate", ""), r.get("fullTextUrlList", {}).get("fullTextUrl", [{}])[0].get("url", ""),
+                r.get("firstPublicationDate", ""), f'https://pubmed.ncbi.nlm.nih.gov/{r.get("pmid")}',
                 r.get("source", "")
             ))
     conn.commit()

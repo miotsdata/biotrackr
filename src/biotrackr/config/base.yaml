@@ -1,0 +1,23 @@
+keywords:
+  - "mass spectrometry"
+  - "LC-MS"
+  - "spatial metabolomics"
+  - "metabolomics"
+  - "scanpy"
+  - "squidpy"
+
+github_repos:
+  - theislab/scanpy
+  - theislab/squidpy
+  - bioconda/bioconda-recipes
+
+github_topics:
+  - "metabolomics"
+  - "mass-spectrometry"
+  - "spatial-transcriptomics"
+
+digest:
+  frequency: "weekly"
+  output_format: "html"
+
+
