@@ -12,7 +12,7 @@ class BiocRelease(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     version: Mapped[str] = mapped_column(String, nullable=False)
     date: Mapped[DateTime] = mapped_column(DateTime, default=func.now())
-
+    added_on = mapped_column(DateTime, server_default=func.now(), nullable=False)
 
 class GithubRepo(Base):
     __tablename__ = "github"
@@ -21,6 +21,7 @@ class GithubRepo(Base):
     name: Mapped[str] = mapped_column(String, nullable=False)
     url: Mapped[str] = mapped_column(String, nullable=False)
     last_updated: Mapped[DateTime] = mapped_column(DateTime, default=func.now())
+    added_on = mapped_column(DateTime, server_default=func.now(), nullable=False)
 
 
 class Paper(Base):
@@ -30,4 +31,5 @@ class Paper(Base):
     title: Mapped[str] = mapped_column(Text, nullable=False)
     doi: Mapped[str] = mapped_column(String, unique=True, nullable=True)
     published: Mapped[DateTime] = mapped_column(DateTime, nullable=True)
+    added_on = mapped_column(DateTime, server_default=func.now(), nullable=False)
 
