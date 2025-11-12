@@ -1,0 +1,33 @@
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy import Integer, String, DateTime, Text, func
+
+
+class Base(DeclarativeBase):
+    pass
+
+
+class BiocRelease(Base):
+    __tablename__ = "bioc_release"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    version: Mapped[str] = mapped_column(String, nullable=False)
+    date: Mapped[DateTime] = mapped_column(DateTime, default=func.now())
+
+
+class GithubRepo(Base):
+    __tablename__ = "github"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String, nullable=False)
+    url: Mapped[str] = mapped_column(String, nullable=False)
+    last_updated: Mapped[DateTime] = mapped_column(DateTime, default=func.now())
+
+
+class Paper(Base):
+    __tablename__ = "papers"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    title: Mapped[str] = mapped_column(Text, nullable=False)
+    doi: Mapped[str] = mapped_column(String, unique=True, nullable=True)
+    published: Mapped[DateTime] = mapped_column(DateTime, nullable=True)
+

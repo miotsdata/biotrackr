@@ -14,7 +14,7 @@ def fetch_bioconductor_release():
         )
     """)
 
-    # 1️⃣ Get the current release number directly from the Bioconductor API
+    # 1. Get the current release number directly from the Bioconductor API
     url = "https://bioconductor.org/config.yaml"
     r = requests.get(url)
     r.raise_for_status()
@@ -29,10 +29,10 @@ def fetch_bioconductor_release():
         conn.close()
         return
 
-    # 2️⃣ Check whether we already have this version stored
+    # 2. Check whether we already have this version stored
     cur.execute("SELECT 1 FROM bioc_releases WHERE version = ?", (version,))
     if cur.fetchone() is None:
-        # 3️⃣ New release detected
+        # 3. New release detected
         release_date = datetime.date.today().isoformat()
         notes_url = f"https://bioconductor.org/news/bioc_{version.replace('.', '_')}_release.html"
         cur.execute(

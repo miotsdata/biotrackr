@@ -1,16 +1,41 @@
-import yaml
-from core import *
-import os
-
-script_dir: str = os.path.dirname(os.path.abspath(__file__))
-default_config_file: str = os.path.join(script_dir, 'config', 'base.yaml')
-
-with open(default_config_file) as f:
-    cfg = yaml.safe_load(f)
-
+#from core import *
+"""
 fetch_papers(cfg["keywords"])
 fetch_bioconductor_release()
 fetch_github_releases(cfg["github_repos"], token=None)  # Add GH token if rate-limited
 generate_digest()
+"""
 
+import argparse
+from pathlib import Path
+from .config import load_config
+from .database import get_db_path, init_db, get_session
+
+def main():
+    parser = argparse.ArgumentParser(prog="biotrackr", description="BioTrackr CLI")
+    parser.add_argument("--config", type=str, help="Path to a custom config file")
+    args = parser.parse_args()
+
+    # Load config
+    config = load_config(Path(args.config) if args.config else None)
+
+    print(config)
+    # Setup DB
+    db_path = get_db_path(config)
+    engine = init_db(db_path)
+    session = get_session(engine)
+
+    print(f"Database initialized at: {db_path}")
+
+    """
+    # Example: inserting something
+    from .models import BiocRelease
+    release = BiocRelease(version="3.20")
+    session.add(release)
+    session.commit()
+
+    print(f"Added Bioc release: {release.version}")
+    """
+if __name__ == "__main__":
+    main()
 
