@@ -20,8 +20,9 @@ class GithubRepo(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name: Mapped[str] = mapped_column(String, nullable=False)
+    tag: Mapped[str] = mapped_column(String)
     url: Mapped[str] = mapped_column(String, nullable=False)
-    last_updated: Mapped[DateTime] = mapped_column(DateTime, default=func.now())
+    published_on: Mapped[DateTime] = mapped_column(DateTime, default=func.now())
     added_on = mapped_column(DateTime, server_default=func.now(), nullable=False)
 
 

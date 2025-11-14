@@ -28,7 +28,14 @@ def main():
     print(f"Database initialized at: {db_path}")
 
     fetch_bioconductor_release(session)    
-    fetch_papers(session, config.get("keywords", []))
+    
+    keywords = config.get("keywords", [])
+    if keywords:
+        fetch_papers(session, keywords)
+
+    github_repos = config.get("github_repos", [])
+    if github_repos:
+        fetch_github(session, github_repos)
 
 if __name__ == "__main__":
     main()
