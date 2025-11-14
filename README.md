@@ -7,7 +7,6 @@
 
 **BioTrackr** is a lightweight CLI tool for managing, analyzing, and reporting biological data.
 
----
 
 ## Features
 - Easy-to-use command-line interface
