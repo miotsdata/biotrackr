@@ -35,6 +35,15 @@
             {% for p in papers %}
             <li><b>{{ p.title }}</b> – published on {{ p.published_on.strftime("%Y-%m-%d") }}
                 {% if p.url %}<a href="{{ p.url }}" target="_blank">Read</a>{% endif %}
+                {% for kw in p.keywords %}
+                    <span style="background-color: {{ kw.color }};
+                                 border-radius: 5px;
+                                 color: white;
+                                 padding: 2px 6px;
+                                 margin-left: 5px;
+                                 font-size: 0.8em;">
+                        {{ kw.name }}</span>
+                {% endfor %}
             </li>
             {% endfor %}
         </ul>

@@ -19,13 +19,10 @@ def main():
     # Load config
     config = load_config(Path(args.config) if args.config else None)
 
-    print(config)
     # Setup DB
     db_path = get_db_path(config)
     engine = init_db(db_path)
     session = get_session(engine)
-
-    print(f"Database initialized at: {db_path}")
 
     fetch_bioconductor_release(session)    
     

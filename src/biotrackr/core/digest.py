@@ -3,7 +3,7 @@ from pathlib import Path
 from jinja2 import Environment, FileSystemLoader
 from sqlalchemy import select, func
 from biotrackr.models import Paper, GithubRepo, BiocRelease  # adjust imports
-
+from sqlalchemy.orm import selectinload
 
 def generate_digest(session):
     """
@@ -12,13 +12,24 @@ def generate_digest(session):
     today = datetime.date.today()
 
     def fetch_table(model, columns):
-        # Filter by added_on date = today
         stmt = select(model).where(func.date(model.added_on) == today)
+
+        # Special case for Paper to load keywords eagerly
+        if model is Paper:
+            stmt = stmt.options(selectinload(Paper.keywords))
+
         rows = session.execute(stmt).scalars().all()
 
         result = []
         for row in rows:
             row_dict = {col: getattr(row, col) for col in columns}
+
+            # For papers, also add the keywords
+            if model is Paper:
+                row_dict['keywords'] = [
+                    {"name": kw.name, "color": kw.color} for kw in row.keywords
+                ]
+
             result.append(row_dict)
         return result
 
