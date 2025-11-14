@@ -1,10 +1,9 @@
 # BioTrackr
 
 [![PyPI](https://img.shields.io/pypi/v/biotrackr.svg)](https://pypi.org/project/biotrackr)
-[![Python Version](https://img.shields.io/pypi/pyversions/biotrackr.svg)](https://pypi.org/project/biotrackr)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![GitHub Issues](https://img.shields.io/github/issues/<your-username>/biotrackr.svg)](https://github.com/<your-username>/biotrackr/issues)
-[![GitHub Repo Size](https://img.shields.io/github/repo-size/<your-username>/biotrackr.svg)](https://github.com/<your-username>/biotrackr)
+[![GitHub Issues](https://img.shields.io/github/issues/miotsdata/biotrackr.svg)](https://github.com/miotsdata/biotrackr/issues)
+[![GitHub Repo Size](https://img.shields.io/github/repo-size/miotsdata/biotrackr.svg)](https://github.com/miotsdata/biotrackr)
 
 **BioTrackr** is a lightweight CLI tool for managing, analyzing, and reporting biological data.
 
@@ -29,7 +28,7 @@ pip install biotrackr
 
 Or install the latest version from GitHub:
 ```
-pip install git+https://github.com/<your-username>/biotrackr.git
+pip install git+https://github.com/miotsdata/biotrackr.git
 ```
 
 --- 
