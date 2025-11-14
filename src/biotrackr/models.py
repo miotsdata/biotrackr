@@ -29,8 +29,10 @@ class Paper(Base):
     __tablename__ = "papers"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    pmid: Mapped[str] = mapped_column(Text, unique=True)
     title: Mapped[str] = mapped_column(Text, nullable=False)
     doi: Mapped[str] = mapped_column(String, unique=True, nullable=True)
-    published: Mapped[DateTime] = mapped_column(DateTime, nullable=True)
+    url: Mapped[str] = mapped_column(String, nullable=False)
+    published_on: Mapped[DateTime] = mapped_column(DateTime, nullable=True)
     added_on = mapped_column(DateTime, server_default=func.now(), nullable=False)
 

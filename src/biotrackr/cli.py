@@ -28,6 +28,7 @@ def main():
     print(f"Database initialized at: {db_path}")
 
     fetch_bioconductor_release(session)    
+    fetch_papers(session, config.get("keywords", []))
 
 if __name__ == "__main__":
     main()
