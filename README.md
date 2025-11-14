@@ -16,7 +16,6 @@
 - Flexible filtering (`--since_days`) and offline mode (`--no-fetch`)
 - Output to custom files (`--output_file`)
 
----
 
 ## Installation
 
@@ -31,7 +30,6 @@ Or install the latest version from GitHub:
 pip install git+https://github.com/miotsdata/biotrackr.git
 ```
 
---- 
 
 ## Usage
 
@@ -62,7 +60,6 @@ Save output to a file:
 biotrackr --output_file report.html
 ```
 
----
 
 ## Configuration
 
@@ -73,7 +70,6 @@ src/biotrackr/config/base.yaml
 
 Override it with --config.
 
----
 
 ## Contributing
 
