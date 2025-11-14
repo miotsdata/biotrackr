@@ -37,6 +37,9 @@ def main():
     if github_repos:
         fetch_github(session, github_repos)
 
+
+    generate_digest(session)
+
 if __name__ == "__main__":
     main()
 
