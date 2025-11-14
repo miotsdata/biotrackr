@@ -5,7 +5,7 @@ from sqlalchemy import select, func
 from biotrackr.models import Paper, GithubRepo, BiocRelease  # adjust imports
 from sqlalchemy.orm import selectinload
 
-def generate_digest(session):
+def generate_digest(session, output_file="report.html"):
     """
     Generate a digest HTML report using only entries added today.
     """
@@ -46,7 +46,7 @@ def generate_digest(session):
 
     html = template.render(**data)
 
-    report_path = Path("report.html")
+    report_path = Path(output_file)
     report_path.write_text(html, encoding="utf-8")
     print(f"✅ Digest generated: {report_path}")
 
