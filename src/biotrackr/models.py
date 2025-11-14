@@ -11,8 +11,9 @@ class BiocRelease(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     version: Mapped[str] = mapped_column(String, nullable=False)
-    date: Mapped[DateTime] = mapped_column(DateTime, default=func.now())
+    release_date: Mapped[DateTime] = mapped_column(DateTime, default=func.now())
     added_on = mapped_column(DateTime, server_default=func.now(), nullable=False)
+    notes_url: Mapped[str] = mapped_column(String, nullable=False)
 
 class GithubRepo(Base):
     __tablename__ = "github"

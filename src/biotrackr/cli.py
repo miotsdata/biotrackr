@@ -1,4 +1,4 @@
-#from core import *
+from .core import *
 """
 fetch_papers(cfg["keywords"])
 fetch_bioconductor_release()
@@ -27,15 +27,8 @@ def main():
 
     print(f"Database initialized at: {db_path}")
 
-    """
-    # Example: inserting something
-    from .models import BiocRelease
-    release = BiocRelease(version="3.20")
-    session.add(release)
-    session.commit()
+    fetch_bioconductor_release(session)    
 
-    print(f"Added Bioc release: {release.version}")
-    """
 if __name__ == "__main__":
     main()
 
