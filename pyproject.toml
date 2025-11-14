@@ -16,6 +16,17 @@ requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "MIT"}
 
+keywords = ["biology", "data-analysis", "CLI", "reporting"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Knowledge :: Bioinformatics",
+]
+
+keywords = ["Bioinformatics", "Releases", "News", "Papers", "Publications"]
+
 [build-system]
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
@@ -25,5 +36,10 @@ build-backend = "pdm.backend"
 distribution = true
 include = ["src/biotrackr/templates/**", "src/biotrackr/config/**"]
 
+
 [project.scripts]
 biotrackr = "biotrackr.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/miotsdata/biotrackr"
+Issues =  "https://github.com/miotsdata/biotrackr/issues"
